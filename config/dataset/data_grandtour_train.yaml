@@ -1,0 +1,6 @@
+name: grandtour
+disp_name: grandtour_train
+dir: GrandTour
+filenames: /home/output/GrandTour/2024-11-15-11-18-14/accumulate_100_pairs.txt
+kitti_bm_crop: true
+valid_mask_crop: null  # no valid_mask_crop for training

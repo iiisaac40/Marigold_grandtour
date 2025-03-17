@@ -1,0 +1,6 @@
+name: grandtour
+disp_name: grandtour_val
+dir: GrandTour/
+filenames: /home/output/GrandTour/2024-11-14-11-17-02/accumulate_100_pairs.txt
+# kitti_bm_crop: false
+# valid_mask_crop: eigen
