@@ -17,3 +17,6 @@ python infer.py  \
     --processing_res 0 \
     --dataset_config config/dataset/data_grandtour_val.yaml \
     --output_dir ${output_dir}/${subfolder}/grandtour_val/prediction \
+
+
+# bash /home/grand_tour_depth_benchmark/third_parties/Marigold_grandtour/script/eval/61_infer_grandtour.sh "" "" "/home/output" "" 
