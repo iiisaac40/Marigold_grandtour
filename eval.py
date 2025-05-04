@@ -163,11 +163,13 @@ if "__main__" == __name__:
         )
         pred_name = os.path.join(os.path.dirname(rgb_name), pred_basename)
         pred_path = os.path.join(prediction_dir, pred_name)
-        depth_pred = np.load(pred_path)
+
 
         if not os.path.exists(pred_path):
             logging.warn(f"Can't find prediction: {pred_path}")
             continue
+
+        depth_pred = np.load(pred_path)
 
         # Align with GT using least square
         if "least_square" == alignment:
@@ -241,7 +243,7 @@ if "__main__" == __name__:
     if alignment:
         metrics_filename += f"-{alignment}"
     metrics_filename += ".txt"
-
+    print(eval_text)
     _save_to = os.path.join(output_dir, metrics_filename)
     with open(_save_to, "w+") as f:
         f.write(eval_text)
