@@ -96,6 +96,12 @@ if "__main__" == __name__:
         default=None,
         help="Max operating resolution used for LS alignment",
     )
+    parser.add_argument(
+        "--dataset_txt_path",
+        type=str,
+        default="/mnt/GrandTour/test_1.txt",
+        help="Resampling method used to resize images. This can be one of 'bilinear' or 'nearest'.",
+    )
 
     parser.add_argument("--no_cuda", action="store_true", help="Run without cuda")
 
@@ -110,6 +116,8 @@ if "__main__" == __name__:
     alignment = args.alignment
     alignment_max_res = args.alignment_max_res
 
+    dataset_txt_path = args.dataset_txt_path
+
     no_cuda = args.no_cuda
     pred_suffix = ".npy"
 
@@ -122,7 +130,8 @@ if "__main__" == __name__:
 
     # -------------------- Data --------------------
     cfg_data = OmegaConf.load(dataset_config)
-
+    cfg_data.filenames = dataset_txt_path
+    
     dataset: BaseDepthDataset = get_dataset(
         cfg_data, base_data_dir=base_data_dir, mode=DatasetMode.EVAL
     )

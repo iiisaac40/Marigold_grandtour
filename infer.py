@@ -109,6 +109,12 @@ if "__main__" == __name__:
         default="bilinear",
         help="Resampling method used to resize images. This can be one of 'bilinear' or 'nearest'.",
     )
+    parser.add_argument(
+        "--dataset_txt_path",
+        type=str,
+        default="/mnt/GrandTour/test_1.txt",
+        help="Resampling method used to resize images. This can be one of 'bilinear' or 'nearest'.",
+    )
 
     parser.add_argument("--seed", type=int, default=None, help="Random seed.")
 
@@ -118,6 +124,7 @@ if "__main__" == __name__:
     dataset_config = args.dataset_config
     base_data_dir = args.base_data_dir
     output_dir = args.output_dir
+    dataset_txt_path = args.dataset_txt_path
 
     denoise_steps = args.denoise_steps
     ensemble_size = args.ensemble_size
@@ -185,6 +192,7 @@ if "__main__" == __name__:
 
     # -------------------- Data --------------------
     cfg_data = OmegaConf.load(dataset_config)
+    cfg_data.filenames = dataset_txt_path
 
     dataset: BaseDepthDataset = get_dataset(
         cfg_data, base_data_dir=base_data_dir, mode=DatasetMode.RGB_ONLY
